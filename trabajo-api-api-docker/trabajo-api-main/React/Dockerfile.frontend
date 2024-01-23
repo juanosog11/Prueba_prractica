@@ -1,0 +1,20 @@
+
+FROM node:18
+
+
+WORKDIR /app
+
+
+COPY React/package*.json ./
+
+
+RUN npm i
+
+
+COPY React/ .
+
+
+EXPOSE 5173
+
+
+CMD [ "npm", "run", "dev", "--", "--host"]

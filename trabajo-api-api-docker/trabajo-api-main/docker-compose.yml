@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: trabajodb
+    ports:
+      - 3307:3306
+    volumes:
+      - ./src/db/base_script.sql:/docker-entrypoint-initdb.d/base_script.sql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - 3000:3000
+    
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./React/Dockerfile.frontend
+    ports:
+      - 5173:5173

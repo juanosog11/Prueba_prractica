@@ -1,0 +1,4 @@
+FROM mcr.microsoft.com/mssql/server:2022-latest
+ENV root PASSWORD="123456"
+ENV ACCEPT_EULA=Y
+COPY base_script.sql ./db
